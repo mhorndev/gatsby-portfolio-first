@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root {
+  --main-bg-color: brown;
+}
+
+* { 
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+   box-sizing: border-box; 
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  color: #FFFFFF;
+  background-color: #202020;
+  font-family: "PT Sans", Roboto, Arial, Helvetica, sans-serif;
+}
+
+main {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  padding-top: 60px;
+}
+
+section {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width:600px) {
+  section {
+    width: 504px;
+  }
+}
+
+@media (min-width:800px) {
+  section {
+    width: 672px;
+  }
+}
+
+@media (min-width:1000px) {
+  section {
+    width: 840px;
+  }
+}
+
+@media (min-width:1200px) {
+  section {
+    width: 1000px;
+  }
+}
+
+/************ Navbar *************/
+
+nav {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 1;
+  position: fixed;
+  border-bottom: 1px solid #333;
+}
+
+nav, nav section, 
+nav ul, nav li, nav a {
+  height: 60px;
+}
+
+nav section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav a {
+  display: block;
+  color: #FFF;
+  line-height: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 500ms ease;
+}
+
+nav a:hover {
+  color: #96F;
+}
+
+nav section:first-child {
+  padding-left: 5px;
+}
+
+nav section:last-child {
+  padding-right: 5px;
+}
+
+nav #brand {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/********************************/

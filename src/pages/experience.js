@@ -1,13 +1,13 @@
 import React from "react"
 
-const Home = () => {
+const Experience = () => {
   return(
     <main>
       <section>
-        <h1>Home</h1>
+        <h1>Experience</h1>
       </section>
     </main>
   )
 }
 
-export default Home
+export default Experience
