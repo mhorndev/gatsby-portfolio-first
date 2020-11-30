@@ -1,19 +1,26 @@
 import React from "react"
-import { navigate } from "gatsby"
 import Navbar from "./navbar"
 import "../styles/layout.css"
+import { AnimatePresence } from "framer-motion"
+import Transition from "./transition"
 
-const Layout = ({children}) => {
+const Layout = ({children,location}) => {
+  function onTransitionCompleted() {
+    console.log('onTransitionCompleted')
+  }
 
-  function onNavigate(path) {
-    navigate(path)
+  function onPageLoaded() {
+    console.log('onPageLoaded')
   }
 
   return(
-    < > 
-      {/* AnimatePresence */}
-      <Navbar onNavigate={onNavigate}/>
-      {children}
+    < >
+      <Navbar/>
+      <AnimatePresence initial={false}>
+        <Transition key={location.key} onTransitionCompleted={onTransitionCompleted}>
+          {React.cloneElement(children, { hello: "world" })}
+        </Transition>
+      </AnimatePresence>
     </>
   )
 }

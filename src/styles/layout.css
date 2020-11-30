@@ -15,7 +15,7 @@ html, body {
   margin: 0;
   padding: 0;
   color: #FFFFFF;
-  background-color: #202020;
+  background-color: #000;
   font-family: "PT Sans", Roboto, Arial, Helvetica, sans-serif;
 }
 
@@ -26,6 +26,7 @@ main {
   bottom: 0;
   position: fixed;
   padding-top: 60px;
+  background-color: #202020;
 }
 
 section {
