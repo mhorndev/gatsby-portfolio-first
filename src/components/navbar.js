@@ -1,37 +1,13 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import links from "./links"
-import { navigate } from "gatsby"
-import { AnimatePresence, useAnimation, motion } from "framer-motion"
+import {  useAnimation, motion } from "framer-motion"
 
-const Navbar = (props) => {
-  const [visible,setVisible] = useState(true)
+const Navbar = ({cbNavigate}) => {
   const controls = useAnimation()
 
-  const onNavigate = (e,path) => {
+  const onLinkClicked = (e,path) => {
     e.preventDefault()
-    //setVisible(false)
-    navigate(path)
-  }
-
-  useEffect(() => {
-    console.log("useEffect " + visible)
-    visible ? showNavbar() : hideNavbar()
-  }, [visible])
-
-  function hideNavbar() {
-    console.log("hideNavbar")
-    controls.start({
-      top: -60,
-      transition: { duration: .25 },
-    })
-  }
-
-  function showNavbar() {
-    console.log("showNavbar")
-    controls.start({
-      top: 0,
-      transition: { duration: .25 },
-    })
+    cbNavigate(path)
   }
 
   return(
@@ -41,7 +17,7 @@ const Navbar = (props) => {
       >
         <section>
           <div id="brand">
-            <a href="/" onClick={e => onNavigate(e, "/")}>
+            <a href="/" onClick={e => onLinkClicked(e, "/")}>
               <strong>Brand</strong>
             </a>
             { /* <img 
@@ -56,7 +32,7 @@ const Navbar = (props) => {
             { links.map((item,index) => {
               return (
                 <li key={index}>
-                  <a href={item.path} onClick={e => onNavigate(e, item.path)}>
+                  <a href={item.path} onClick={e => onLinkClicked(e, item.path)}>
                     {item.name}
                   </a>
                 </li>

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { motion } from "framer-motion"
 
+/*
 const cube = {
   initial: {
     transform: "translateX(50%) rotateY(90deg)",
@@ -23,6 +24,7 @@ const cube = {
     }
   }
 }
+*/
 
 const slide = {
   initial: {
@@ -49,20 +51,7 @@ const slide = {
   }
 }
 
-const Transition = ({children, onTransitionCompleted}) => {
-  const [completed,setCompleted] = useState(false)
-
-  function onAnimationComplete() {
-    if (!completed) {
-      setCompleted(!completed)
-    }
-  }
-
-  useEffect(() => {
-    if (completed) {
-      onTransitionCompleted()
-    }
-  }, [completed])
+const Transition = ({children, cbTransitionCompleted}) => {
 
   return (
     <div 
@@ -79,7 +68,7 @@ const Transition = ({children, onTransitionCompleted}) => {
       animate="animate"
       exit="exit"
       variants={slide}
-      onAnimationComplete={onAnimationComplete}
+      onAnimationComplete={cbTransitionCompleted}
     >
       {children}
     </motion.main>

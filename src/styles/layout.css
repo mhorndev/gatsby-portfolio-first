@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-:root {
-  --main-bg-color: brown;
-}
 
 * { 
   -moz-box-sizing: border-box; 
@@ -15,6 +12,7 @@ html, body {
   margin: 0;
   padding: 0;
   color: #FFFFFF;
+  overflow: hidden;
   background-color: #000;
   font-family: "PT Sans", Roboto, Arial, Helvetica, sans-serif;
 }
@@ -118,7 +116,7 @@ nav section:last-child {
   padding-right: 5px;
 }
 
-nav #brand {
+nav #brandasdasdas {
   display: flex;
   cursor: pointer;
   align-items: center;

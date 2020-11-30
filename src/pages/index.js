@@ -1,9 +1,16 @@
 import React from "react"
+import { motion } from "framer-motion"
 
-const Home = (props) => {
+const Home = () => {
+
   return(
     <section>
-      <h1>Home</h1>
+      <motion.h1
+        initial={{y: 20}}
+        animate={{y: 0}}
+      >
+        Home
+      </motion.h1>
     </section>
   )
 }
