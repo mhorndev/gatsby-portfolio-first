@@ -1,14 +1,48 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
+import { navigate } from "gatsby"
 import links from "./links"
 import {  useAnimation, motion } from "framer-motion"
+import { Context } from "../components/context"
+import Brand from "./brand"
 
-const Navbar = ({cbNavigate}) => {
+const Navbar = ({location}) => {
   const controls = useAnimation()
+  const {navContext,setNavContext} = useContext(Context)
 
   const onLinkClicked = (e,path) => {
     e.preventDefault()
-    cbNavigate(path)
+    if (path !== location.pathname) {
+      
+      setNavContext(prev => ({
+        ...prev, 
+        navVisible: false,
+        menuVisible: false,
+        transitionCompleted: false,
+        pageReady: false,
+      }))
+
+      setTimeout(function() { navigate(path) }, 500)
+    }
   }
+
+  function showNavbar() {
+    controls.start({
+      y: 0,
+      transition: { duration: .25 }
+    })
+  }
+
+  function hideNavbar() {
+    controls.start({
+      y: -60,
+      transition: { duration: .25 }
+    })
+  }
+
+  useEffect(() => {
+    console.log('hey')
+    navContext.navVisible ? showNavbar(): hideNavbar()
+  }, [navContext.navVisible])
 
   return(
     < >
@@ -16,18 +50,7 @@ const Navbar = ({cbNavigate}) => {
         animate={controls}
       >
         <section>
-          <div id="brand">
-            <a href="/" onClick={e => onLinkClicked(e, "/")}>
-              <strong>Brand</strong>
-            </a>
-            { /* <img 
-              width="30"
-              alt="Gatsby"
-              onClick={e => onNavigate(e,"/")}
-              src="https://www.gatsbyjs.com/Gatsby-Monogram.svg"  
-              />*/}
-            
-          </div>
+          <Brand cbClick={(e,path) =>onLinkClicked(e, path)} />
           <ul>
             { links.map((item,index) => {
               return (

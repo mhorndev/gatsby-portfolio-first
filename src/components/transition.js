@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useContext } from "react"
 import { motion } from "framer-motion"
+import { Context } from "./context"
 
 /*
 const cube = {
@@ -51,7 +52,14 @@ const slide = {
   }
 }
 
-const Transition = ({children, cbTransitionCompleted}) => {
+const Transition = ({children}) => {
+  const {navContext,setNavContext} = useContext(Context)
+
+  function onAnimationComplete() {
+    setNavContext(prev => ({
+      ...prev, transitionCompleted: true
+    }))
+  }
 
   return (
     <div 
@@ -68,7 +76,7 @@ const Transition = ({children, cbTransitionCompleted}) => {
       animate="animate"
       exit="exit"
       variants={slide}
-      onAnimationComplete={cbTransitionCompleted}
+      onAnimationComplete={onAnimationComplete}
     >
       {children}
     </motion.main>
