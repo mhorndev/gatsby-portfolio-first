@@ -1,20 +1,31 @@
-import React from "react"
+import React, { useState } from "react"
+import { motion } from "framer-motion"
 
 const Brand = ({cbClick}) => {
+  const [hovered,setHovered] = useState(false)
+
   return (
     <div id="brand"
       onClick={
         e => cbClick(e,"/")
       }
+      onMouseEnter={() => {
+        setHovered(true)
+      }}
+      onMouseLeave={() => {
+        setHovered(false)
+      }}
     >
       <svg 
         width="40px" 
         height="48px" 
         viewBox="0 0 48 48"
       >
-        <path 
+        <motion.path 
           name="hexagon"
           fill="#96F"
+          animate={{ rotate: hovered ? 180 : 0 }}
+          transition={{ duration: .5 }}
           d="M 47.383 21.898 C 48.206 23.298 48.206 24.699 
           47.383 26.1 L 37.54 42.899 C 36.717 44.3 35.487 45 
           33.846 45 L 14.154 45.001 C 12.514 45.001 11.283 
@@ -29,9 +40,11 @@ const Brand = ({cbClick}) => {
           41.469 C 33.556 41.469 34.578 40.888 35.263 39.723 L 
           43.452 25.747 C 44.137 24.582 44.136 23.416 43.451 22.252 Z" 
         />
-        <path 
+        <motion.path 
           name="letter"
           fill="#FFF"
+          animate={{ scale: hovered ? 1.1 : 1 }}
+          transition={{ duration: .25 }}
           d="M 25.82 31.195 L 22.18 31.195 L 22.18 23.575 C 22.18
           22.288 22.057 21.375 21.81 20.835 C 21.57 20.295 21.067 
           20.025 20.3 20.025 C 19.667 20.025 19.153 20.198 18.76 
