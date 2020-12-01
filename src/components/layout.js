@@ -25,7 +25,7 @@ const Layout = ({children,location}) => {
         <Navbar location={location}/>
         <AnimatePresence initial={false}>
           <Transition key={location.key}>
-            {children}
+            {children} 
           </Transition>
         </AnimatePresence>
       </Context.Provider>
