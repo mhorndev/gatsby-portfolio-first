@@ -6,15 +6,9 @@ const Brand = ({cbClick}) => {
 
   return (
     <div id="brand"
-      onClick={
-        e => cbClick(e,"/")
-      }
-      onMouseEnter={() => {
-        setHovered(true)
-      }}
-      onMouseLeave={() => {
-        setHovered(false)
-      }}
+      onClick={e => cbClick(e,"/")}
+      onMouseEnter={() => { setHovered(true) }}
+      onMouseLeave={() => { setHovered(false) }}
     >
       <svg 
         width="40px" 

@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import { navigate } from "gatsby"
-import links from "./links"
-import {  useAnimation, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import { Context } from "../components/context"
 import Brand from "./brand"
+import useResize from "../hooks/useResize"
 
 const Navbar = ({location}) => {
-  const controls = useAnimation()
+  const windowWidth = useResize().width
   const {navContext,setNavContext} = useContext(Context)
 
   const onLinkClicked = (e,path) => {
@@ -17,51 +17,61 @@ const Navbar = ({location}) => {
         ...prev, 
         navVisible: false,
         menuVisible: false,
-        transitionCompleted: false,
-        pageReady: false,
+        transitionCompleted: false
       }))
 
       setTimeout(function() { navigate(path) }, 500)
     }
   }
 
-  function showNavbar() {
-    controls.start({
-      y: 0,
-      transition: { duration: .25 }
-    })
-  }
-
-  function hideNavbar() {
-    controls.start({
-      y: -60,
-      transition: { duration: .25 }
-    })
-  }
-
-  useEffect(() => {
-    console.log('hey')
-    navContext.navVisible ? showNavbar(): hideNavbar()
-  }, [navContext.navVisible])
-
   return(
     < >
       <motion.nav
-        animate={controls}
+        animate={{ top: navContext.navVisible ? 0 : -60 }}
+        transition={{ duration: .3 }}
       >
         <section>
           <Brand cbClick={(e,path) =>onLinkClicked(e, path)} />
+          { windowWidth >= 1000 ?
           <ul>
-            { links.map((item,index) => {
-              return (
-                <li key={index}>
-                  <a href={item.path} onClick={e => onLinkClicked(e, item.path)}>
-                    {item.name}
-                  </a>
-                </li>
-              )
-            })}
+            <li>
+              <a 
+                href="/about" 
+                onClick={e => onLinkClicked(e, "/about")}
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a 
+                href="/experience" 
+                onClick={e => onLinkClicked(e, "/experience")}
+              >
+                Experience
+              </a>
+            </li>
+            <li>
+              <a 
+                href="/portfolio" 
+                onClick={e => onLinkClicked(e, "/portfolio")}
+              >
+                Portfolio
+              </a>
+            </li>
+            <li>
+              <a 
+                href="/contact" 
+                onClick={e => onLinkClicked(e, "/contact")}
+              >
+                Contact
+              </a>
+            </li>
           </ul>
+          :
+            <div>
+              Burger code is next
+            </div>
+          }
         </section>
       </motion.nav>
     </>
