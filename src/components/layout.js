@@ -9,7 +9,7 @@ import { Context } from "./context"
 const Layout = ({children,location}) => {
   const [navContext,setNavContext] = useState({
     navVisible: true,
-    menuVisible: false,
+    menuOpen: false,
     transitionCompleted: false,
     pageReady: false,
   })

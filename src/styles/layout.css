@@ -124,4 +124,77 @@ nav #brand {
   padding-right: 10px;
 }
 
-/********************************/
+/************ Burger *************/
+
+#burger-wrapper {
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+#burger {
+  width: 25px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px;
+}
+
+#burger span::before,
+#burger span,
+#burger span::after {
+  content: "";
+  right: 0;
+  height: 3px;
+  position: absolute;
+  border-radius: 1px;
+  background-color: #FFF;
+  transition: 
+  transform 250ms ease, 
+  width 250ms ease, 
+  top 250ms ease, 
+  left 250ms ease;
+}
+
+#burger span::before { 
+  top: -8px;
+  width: 80%;
+}
+
+#burger span {
+  width: 100%;
+}
+
+#burger span::after { 
+  top: 8px;
+  width: 60%;
+}
+
+#burger.hovered span::before,
+#burger.hovered span::after { 
+  width: 100%;
+}
+
+#burger.active span {
+  height: 0px;
+  transform-origin: 50%;
+  transform: rotateX(180deg);
+}
+
+#burger.active span::before {
+  left: -1px;
+  top: -2px;
+  width: 100%;
+  transform: rotate(45deg);
+}
+
+#burger.active span::after {
+  left: -1px;
+  top: -2px;
+  width: 100%;
+  transform: rotate(-45deg);
+}

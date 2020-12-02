@@ -3,6 +3,7 @@ import { navigate } from "gatsby"
 import { motion } from "framer-motion"
 import { Context } from "../components/context"
 import Brand from "./brand"
+import Burger from "./burger"
 import useResize from "../hooks/useResize"
 
 const Navbar = ({location}) => {
@@ -68,9 +69,7 @@ const Navbar = ({location}) => {
             </li>
           </ul>
           :
-            <div>
-              Burger code is next
-            </div>
+            <Burger/>
           }
         </section>
       </motion.nav>
