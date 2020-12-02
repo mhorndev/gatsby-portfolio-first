@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion"
 import Transition from "./transition"
 import { navigate } from "gatsby"
 import { Context } from "./context"
+import Drawer from "../components/drawer"
 
 const Layout = ({children,location}) => {
   const [navContext,setNavContext] = useState({
@@ -23,6 +24,7 @@ const Layout = ({children,location}) => {
     < >
       <Context.Provider value={{navContext,setNavContext}}>
         <Navbar location={location}/>
+        <Drawer location={location}/>
         <AnimatePresence initial={false}>
           <Transition key={location.key}>
             {children} 

@@ -17,7 +17,7 @@ const Navbar = ({location}) => {
       setNavContext(prev => ({
         ...prev, 
         navVisible: false,
-        menuVisible: false,
+        menuOpen: false,
         transitionCompleted: false
       }))
 

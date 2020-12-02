@@ -19,7 +19,7 @@ const Brand = ({cbClick}) => {
           name="hexagon"
           fill="#96F"
           animate={{ rotate: hovered ? 180 : 0 }}
-          transition={{ type: "spring", stiffness: 50, duration: .5 }}
+          transition={{ duration: .5 }}
           d="M 47.383 21.898 C 48.206 23.298 48.206 24.699 
           47.383 26.1 L 37.54 42.899 C 36.717 44.3 35.487 45 
           33.846 45 L 14.154 45.001 C 12.514 45.001 11.283 
