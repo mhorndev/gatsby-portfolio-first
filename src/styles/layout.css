@@ -69,6 +69,7 @@ nav {
   height: 60px;
   z-index: 10;
   position: fixed;
+  background-color: #202020;
   border-bottom: 1px solid #333;
 }
 
@@ -223,14 +224,42 @@ nav #brand {
   right: 0;
   height: 100%;
   position: relative;
-
+  z-index: 3;
+  background-color: #202020;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px red solid;
+}
+
+#drawer .footer {
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  border-top: 1px solid #333;
+  background-color: #202020;
+  display: flex;
+  justify-content: center;
+}
+
+#drawer .footer ul {
+  margin: 0;
+  display: inline-flex;
+}
+
+#drawer .footer ul {
+  padding: 15px;
+}
+
+#drawer .footer svg {
+  margin-left: 20px;
+  margin-right: 20px;
+  cursor: pointer;
 }
 
 #drawer ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
